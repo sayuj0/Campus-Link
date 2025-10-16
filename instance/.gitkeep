@@ -1,0 +1,2 @@
+# This file ensures the instance folder is tracked by git
+# The folder is needed for the application to store database files

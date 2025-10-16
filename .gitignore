@@ -1,0 +1,21 @@
+# Virtual environment
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Database files - ignore db files but keep instance folder
+instance/*.db
+instance/*.sqlite
+instance/*.sqlite3
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db

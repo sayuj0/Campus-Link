@@ -1,0 +1,26 @@
+@startuml usecase
+!pragma layout smetana
+left to right direction
+
+package "Schools System" {
+  usecase "Sign Up" as UC_SignUp
+  usecase "Log In" as UC_Login
+  usecase "List Schools" as UC_List
+  usecase "Create School" as UC_Create
+  usecase "Update School" as UC_Update
+  usecase "Delete School" as UC_Delete
+  usecase "Update Transfer Cost\n(between schools)" as UC_UpdateCost
+  usecase "Get Optimal Resource Plans" as UC_Optimize
+  usecase "Update Resource Availability\n& Transfer Status" as UC_ResAvail
+}
+
+User --> UC_SignUp
+User --> UC_Login
+User --> UC_List
+User --> UC_Create
+User --> UC_Update
+User --> UC_Delete
+User --> UC_UpdateCost
+User --> UC_Optimize
+User --> UC_ResAvail
+@enduml

@@ -1,0 +1,39 @@
+@startuml class
+!pragma layout smetana
+left to right direction 
+
+class User {
+    -id: int
+    -name: String
+    -about: String
+    -password: LargeBinary
+    +getId(): int
+    +getName(): String
+    +getAbout(): String
+    +getPassword(): LargeBinary
+}
+
+class School {
+    -id: int
+    -name: String
+    -address: String
+    -type: String
+    -status: String
+    +getId(): int
+    +getName(): String
+    +getAddress(): String
+    +getType(): String
+    +getStatus(): String
+}
+
+class TransportationCost {
+    -cost: float
+    +getCost(): float
+    +getFromSchool(): School
+    +getToSchool(): School
+}
+
+School "1" -- "0..*" TransportationCost : fromSchool >
+School "1" -- "0..*" TransportationCost : toSchool >
+
+@enduml

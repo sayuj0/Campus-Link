@@ -1,0 +1,115 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: medium;
+  background-color: black;
+  color: white;
+}
+
+h1 {
+  color: lightblue;
+  margin-left: 20px;
+}
+
+h2 {
+  color: rgb(6, 168, 255);
+}
+
+table, th, td {
+  border: 1px solid white;
+  padding: 5px;
+}
+
+th {
+  background-color: darkblue;
+  color: white;
+}
+
+td {
+  color: white;
+}
+
+input[type=submit] {
+  background-color: darkblue;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: navy;
+}
+
+/* Style form inputs for dark theme */
+input[type=text], input[type=password], select, textarea {
+  background-color: #333;
+  color: white;
+  border: 1px solid #666;
+  padding: 5px;
+}
+
+/* Style form labels */
+label {
+  color: white;
+}
+
+.odd_row {
+  background-color: #333;
+}
+
+.even_row {
+  background-color: #555;
+}
+
+.button {
+  background-color: darkblue;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 4px;
+  display: inline-block;
+  margin: 2px;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: navy;
+}
+
+/* Special styling for Sign Out button to be different */
+.button.signout {
+  background-color: #dc3545;
+  color: white;
+}
+
+.button.signout:hover {
+  background-color: #c82333;
+}
+
+.nav-buttons {
+    text-align: right;
+    margin-top: -50px;
+    margin-bottom: 30px;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+/* Flash messages styling for dark theme */
+.flash-message {
+  color: lightgreen;
+}
+
+/* Links styling for dark theme */
+a {
+  color: lightblue;
+}
+
+a:hover {
+  color: white;
+}

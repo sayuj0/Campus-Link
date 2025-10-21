@@ -12,10 +12,6 @@ app.secret_key = 'you will never know'
 
 # db initialization
 from flask_sqlalchemy import SQLAlchemy
-# app.config changed to fix path issue on 10/02/2025 AG#
-#Absolute path - do not use unless for development
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////workspaces/project-1-schools-404-not-found/instance/schools.db'
-# Use Flask's instance_path for portable DB location
 app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{app.instance_path}/schools.db"
 db = SQLAlchemy(app)
 

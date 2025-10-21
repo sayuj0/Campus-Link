@@ -1,0 +1,84 @@
+{% extends 'base.html' %} 
+{% block main %}
+<h2>Optimal Resource Route</h2>
+
+<p class="nav-buttons">
+  <a href="{{ url_for('list_schools') }}" class="button">Back to Schools</a>
+</p>
+
+<div style="display: flex;">
+  <!-- Left side: info and debug -->
+  <div style="flex: 1;">
+    {% if form %}
+    <form action="" method="POST" novalidate>
+      {{ form.hidden_tag() }}
+      <p>
+        {{ form.target_school_id.label }}<br />
+        {{ form.target_school_id() }} {% for error in form.target_school_id.errors %}
+        <span style="color: red">{{ error }}</span>
+        {% endfor %}
+      </p>
+      <p>{{ form.submit(class_='button') }}</p>
+    </form>
+    {% endif %}
+
+    {% if result %}
+      <div>
+        <h3>Optimal Route</h3>
+        <p>{{ result['path'] }}<br>
+        Total Cost: ${{ result['total_cost'] }}<br>
+        Transfers: {{ result['transfers'] }}</p>
+      </div>
+    {% endif %}
+
+    {% if result %} {% if result.success %}
+    <div
+      style="
+        background-color: #1e1e1e;
+        color: #d4d4d4;
+        padding: 20px;
+        border-radius: 5px;
+        font-family: 'Courier New', Consolas, monospace;
+        font-size: 14px;
+        line-height: 1.6;
+        max-width: 100%;
+      "
+    >
+      <h3 style="color: #4ec9b0; margin-top: 0">Debug Information</h3>
+      <p style="margin-bottom: 5px">
+        <strong style="color: #dcdcaa"
+          >Shortest distances from {{ result.debug.source_id }}:</strong
+        >
+      </p>
+      <p style="color: #ce9178; margin-top: 5px; margin-bottom: 15px">
+        {{ result.debug.distances }}
+      </p>
+      <p style="margin-bottom: 10px">
+        <strong style="color: #dcdcaa">Shortest Path Forest (SPF):</strong>
+      </p>
+      {% for node, path in result.debug.spf.items() %}
+      <p style="color: #9cdcfe; margin: 3px 0">
+        spf to <span style="color: #b5cea8">{{ node }}</span>:
+        <span style="color: #ce9178">{{ path }}</span>
+      </p>
+      {% endfor %}
+    </div>
+    <h3>Route Results</h3>
+    <p><strong>Total Cost:</strong> {{ result.total_cost }}</p>
+    <p><strong>Transfers:</strong> {{ result.num_transfers }}</p>
+    <p><strong>Path:</strong> {{ result.path_names|join(' → ') }}</p>
+    <p style="color: green">{{ result.message }}</p>
+    {% else %}
+    <p style="color: red">{{ result.message }}</p>
+    {% endif %} {% endif %}
+  </div>
+  <!-- Right side: large graph -->
+  <div style="flex: 1; display: flex; align-items: flex-start; justify-content: center;">
+    {% if result %}
+<img src="{{ url_for('school_routes_visual', id=source_id, target_id=target_id) }}"
+     alt="School Routes Graph"
+     style="width: 100%; height: auto; min-width: 300px; max-width: 450px; max-height: 350px; object-fit: contain;">
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

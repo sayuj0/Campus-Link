@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% block main %}
+<h1>Schools</h1>
+
+<!-- Schools Table -->
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Type</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for school in schools %}
+    <tr>
+      <td>{{ school.id }}</td>
+      <td>{{ school.name }}</td>
+      <td>{{ school.address }}</td>
+      <td>{{ school._type }}</td>
+      <td>{{ school.status }}</td>
+      <td>
+        <a href="{{ url_for('update_school', id=school.id) }}" class="button"
+          >update</a
+        >
+        <a href="{{ url_for('delete_school', id=school.id) }}" class="button"
+          >delete</a
+        >
+        <a href="{{ url_for('school_costs', id=school.id) }}" class="button"
+          >costs</a
+        >
+        <a href="{{ url_for('school_routes', id=school.id) }}" class="button"
+          >routes</a
+        >
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<!-- Buttons Container -->
+<div class="button-container">
+  <a href="{{ url_for('create_school') }}" class="button">Create School</a>
+</div>
+{% endblock %}

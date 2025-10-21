@@ -1,0 +1,72 @@
+{% extends 'base.html' %} {% block main %}
+<h2>Transportation Costs</h2>
+
+<!-- Navigation buttons -->
+<p class="nav-buttons">
+  <a href="{{ url_for('list_schools') }}" class="button">Back to Schools</a>
+</p>
+
+<!-- Check if we have enough schools -->
+{% if schools|length < 2 %}
+<div class="alert alert-warning">
+  <h3>Cannot Add Transportation Costs</h3>
+  <p>
+    You need at least 2 schools to create transportation costs. Please
+    <a href="{{ url_for('create_school') }}">add more schools</a> first.
+  </p>
+</div>
+{% else %}
+
+<!-- Existing Costs Table -->
+{% if existing_costs %}
+<table>
+  <thead>
+    <tr>
+      <th>From</th>
+      <th>To</th>
+      <th>Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for cost in existing_costs %}
+    <tr>
+      <td>{{ cost.from_school.name }}</td>
+      <td>{{ cost.to_school.name }}</td>
+      <td>${{ cost.cost }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No transportation costs recorded yet.</p>
+{% endif %}
+
+<h3>Add New Transportation Cost</h3>
+<form action="" method="POST" novalidate>
+  {{ form.hidden_tag() }}
+
+  <p>
+    {{ form.from_school_id.label }}<br />
+    {{ form.from_school_id() }} {% for error in form.from_school_id.errors %}
+    <span style="color: red">[{{ error }}]</span>
+    {% endfor %}
+  </p>
+
+  <p>
+    {{ form.to_school.label }}<br />
+    {{ form.to_school() }} {% for error in form.to_school.errors %}
+    <span style="color: red">[{{ error }}]</span>
+    {% endfor %}
+  </p>
+
+  <p>
+    {{ form.cost.label }}<br />
+    {{ form.cost(size=15) }} {% for error in form.cost.errors %}
+    <span style="color: red">[{{ error }}]</span>
+    {% endfor %}
+  </p>
+
+  <p>{{ form.submit() }}</p>
+</form>
+
+{% endif %} {% endblock %}

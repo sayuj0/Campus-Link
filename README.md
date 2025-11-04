@@ -173,12 +173,20 @@ Current configuration values (see `app/__init__.py` & `dockerfile`):
 4. Navigate to a school → “Routes” → select a target school → compute.
 5. View optimal path and the visualization PNG.
 
+See Pics for Usage below:
+
 ![Login/Signup Page](pics/pic1.png)
+
 ![Signup Page](pics/pic2.png)
+
 ![Login Page](pics/pic3.png)
+
 ![Create School](pics/pic4.png)
+
 ![Schools dashboard page](pics/pic5.png)
+
 ![Costs page](pics/pic6.png)
+
 ![Routes page](pics/pic7.png)
 
 ## Example Route Output (Textual)
